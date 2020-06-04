@@ -19,7 +19,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb+srv://prosrv23:adirav%402000@cluster0-gtewe.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect(""); //server of mongoDB atlas
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
