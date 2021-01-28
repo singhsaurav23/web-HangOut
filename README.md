@@ -4,5 +4,5 @@ This is a fully functional dynamic website where people can upload the different
 #### Functions:
 Authorization, Authentication, Data Persistence, Rest API, Data Associations, Databases(MongoDB Atlas)
 #### Features:
-###### Dynamic Pricing, Add restaurants, Beautiful pictures of restaurants, Navbar, Jumbotrons, CSS styling, Animation using CSS, comments(edit, delete,add)
-##### link- https://murmuring-dawn-16885.herokuapp.com/
+###### Dynamic Pricing, Add restaurants, Beautiful pictures of restaurants, Navbar, Jumbotrons, CSS styling, Animation using CSS, comments(edit, delete,add), Password reset Option, Stripe API for payment, Push Notifications, Fuzzy search, Admin Login option, User's Profile
+
