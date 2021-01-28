@@ -1,11 +1,12 @@
 var express = require("express"),
 	router = express.Router({mergeParams: true}),
 	Restaurant = require("../models/restaurant"),
-	Comment = require("../models/comment"),
-	middleware = require("../middleware");
+	Comment = require("../models/comment");
+	let { checkCommentOwnership, isLoggedIn, isPaid } = require("../middleware");
+router.use(isLoggedIn, isPaid);  
 	
 
-router.get("/new", middleware.isLoggedIn, function(req, res){
+router.get("/new", function(req, res){
 	
 	Restaurant.findById(req.params.id, function(err,restaurant){
 		if(err) console.log(err);
@@ -16,7 +17,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 	
 });
 
-router.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", function(req, res){
 	Restaurant.findById(req.params.id, function(err, restaurant){
 		if(err){ console.log(err);
 			   res.redirect("/restaurants");
@@ -42,7 +43,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 	});
 });
 
-router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){	
+router.get("/:comment_id/edit", checkCommentOwnership, function(req, res){	
 	Restaurant.findById(req.params.id, function(err, foundRestaurant){
 		if(err || !foundRestaurant){
 			req.flash("error", "Restaurant not found");
@@ -60,7 +61,7 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
 	
 });
 
-router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
+router.put("/:comment_id", checkCommentOwnership, function(req, res){
 	Comment.findByIdAndUpdate(req.params.comment_id,  req.body.comment, function(err, updatedComment){  
 		if(err) res.redirect("back");
 		else{
@@ -69,7 +70,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
 	});
 });
 
-router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
+router.delete("/:comment_id", checkCommentOwnership, function(req, res){
 		Comment.findByIdAndRemove(req.params.comment_id, function(err){  
 		if(err) res.redirect("back");
 		else{

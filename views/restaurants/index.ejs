@@ -9,10 +9,30 @@
     <p>
      <a class="btn btn-primary btn-lg" href="/restaurants/new">Add new Restaurant</a>
    </p>
+		 <form action="/restaurants" method="GET" class="form-inline">
+			   <div class="form-group">
+				   <input type="text" name="search" placeholder="Restaurant search..." class="form-control">
+				   <input type="submit" value="Search" class="btn btn-default">
+			   </div>
+	   </form>  
+		 
+	  
 </div>
 </header>
 
 	<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+		         <div class="col-md-12">
+             <% if(noMatch !== null) { %>
+             <h3><%= noMatch %></h3>
+          			
+            	<form action="/restaurants" method="GET" class="form-inline">
+            		<div class="form-group">
+            			<input type="text" name="search" placeholder="Restaurant search..." class="form-control">
+            			<input type="submit" value="Search" class="btn btn-default">
+            		</div>
+            	</form>
+             <% } %>
+         </div>
 		<% restaurants.forEach(function(restaurant){ %>
 <div class="col-md-3 col-sm-6">
 	<div class="thumbnail">
