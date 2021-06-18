@@ -6,3 +6,5 @@ Authorization, Authentication, Data Persistence, Rest API, Data Associations, Da
 #### Features:
 ###### Dynamic Pricing, Add restaurants, Beautiful pictures of restaurants, Navbar, Jumbotrons, CSS styling, Animation using CSS, comments(edit, delete,add), Password reset Option, Stripe API for payment, Push Notifications, Fuzzy search, Admin Login option, User's Profile
 
+### Deployed Link: https://hangout-app-mvit.herokuapp.com/
+
